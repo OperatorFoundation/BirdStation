@@ -68,13 +68,52 @@
 #define PRE_TRIGGER_BUFFER_MS 2000    // Audio to include before trigger
 
 // Audio quality assessment
-#define MIN_SNR_DB       6.0      // Minimum signal-to-noise ratio
-#define GOOD_SNR_DB      15.0     // Good quality SNR threshold
-#define EXCELLENT_SNR_DB 25.0     // Excellent quality SNR threshold
+#define MIN_SNR_DB        6.0   // Minimum signal-to-noise ratio
+#define GOOD_SNR_DB      15.0   // Good quality SNR threshold
+#define EXCELLENT_SNR_DB 25.0   // Excellent quality SNR threshold
+
+// ============================================================================
+// FREQUENCY DETECTION PARAMETERS
+// ============================================================================
+
+// AudioAnalyzeNoteFrequency confidence thresholds
+#define NOTE_CONFIDENCE_HIGH      0.8   // High confidence in frequency detection
+#define NOTE_CONFIDENCE_MEDIUM    0.5   // Medium confidence threshold
+#define NOTE_CONFIDENCE_LOW       0.3   // Low confidence (probably noise)
+
+// Tonal detection frequency bounds
+#define TONAL_FREQ_MIN           500    // Minimum Hz for tonal bird sounds
+#define TONAL_FREQ_MAX         10000    // Maximum Hz for tonal bird sounds
+
+// Band-specific SNR thresholds
+#define MIN_SNR_DB_LOW          10.0    // Low freq bands (more rumble noise)
+#define MIN_SNR_DB_MID           6.0    // Mid freq bands (standard)
+#define MIN_SNR_DB_HIGH          8.0    // High freq bands
+#define MIN_SNR_DB_BROADBAND     6.0    // Overall broadband threshold
 
 // FFT Configuration
 #define FFT_SIZE         1024     // FFT bin size
 #define SAMPLE_RATE      44100    // Audio sample rate (Hz)
+
+// ============================================================================
+// BIRD FREQUENCY BAND DEFINITIONS
+// ============================================================================
+
+// Low frequency band (owls, doves, crows)
+#define BIRD_BAND_LOW_MIN        200     // Hz - Bottom of low bird band
+#define BIRD_BAND_LOW_MAX       2000     // Hz - Top of low bird band
+
+// Mid frequency band (most songbirds, robins, thrushes)
+#define BIRD_BAND_MID_MIN       2000     // Hz - Bottom of mid bird band  
+#define BIRD_BAND_MID_MAX       6000     // Hz - Top of mid bird band
+
+// High frequency band (warblers, finches, high-pitched calls)
+#define BIRD_BAND_HIGH_MIN      6000     // Hz - Bottom of high bird band
+#define BIRD_BAND_HIGH_MAX     12000     // Hz - Top of high bird band
+
+// Overall bird detection range
+#define BIRD_FREQ_MIN_OVERALL    200     // Hz - Lowest bird frequency we detect
+#define BIRD_FREQ_MAX_OVERALL  12000     // Hz - Highest bird frequency we detect
 
 // ============================================================================
 // POWER MANAGEMENT PARAMETERS
